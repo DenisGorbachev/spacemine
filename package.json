@@ -1,0 +1,20 @@
+{
+  "name": "spacemine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:denis.d.gorbachev/spacemine.git",
+  "author": "Denis Gorbachev <denis.d.gorbachev@gmail.com>",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch"
+  },
+  "engines": {
+    "node": "^8.11.0",
+    "yarn": "^1.6.0"
+  },
+  "devDependencies": {
+    "jest": "^23.1.0",
+    "should": "^13.2.1"
+  }
+}
