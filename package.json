@@ -15,6 +15,8 @@
     "yarn": "^1.6.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "jest": "^23.1.0",
     "should": "^13.2.1"
   },
