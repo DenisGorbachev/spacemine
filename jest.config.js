@@ -2,4 +2,6 @@ const {defaults} = require('jest-config');
 
 process.env['NODE_ENV'] = 'test';
 
-module.exports = {};
+module.exports = {
+  setupTestFrameworkScriptFile: './jest.setup.js'
+};

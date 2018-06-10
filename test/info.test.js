@@ -6,12 +6,7 @@ const clientSocket = require("socket.io-client");
 let server, client;
 
 beforeAll(() => {
-  server = serverSocket(config.get('port'));
-  server.on('connection', (socket) => {
-    socket.on('info', (cb) => {
-      cb(_.pick(require('../package.json'), ['name', 'repository', 'version']));
-    });
-  });
+  server = require('../lib/server');
 });
 
 afterAll((done) => {
@@ -23,7 +18,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  client.disconnect();
+  client.close();
 });
 
 test('info', (done) => {

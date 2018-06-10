@@ -4,10 +4,11 @@
   "main": "index.js",
   "repository": "git@gitlab.com:denis.d.gorbachev/spacemine.git",
   "author": "Denis Gorbachev <denis.d.gorbachev@gmail.com>",
-  "license": "GPL-3.0-only",
+  "license": "GPL-3.0",
   "scripts": {
-    "test": "jest",
-    "watch": "jest --watch"
+    "test": "jest --watch",
+    "test-once": "jest",
+    "start": "NODE_ENV=production node index.js"
   },
   "engines": {
     "node": "^8.11.0",
@@ -18,8 +19,12 @@
     "should": "^13.2.1"
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "config": "^1.30.0",
+    "death": "^1.1.0",
     "lodash": "^4.17.10",
-    "socket.io": "^2.1.1"
+    "mongoose": "^5.1.4",
+    "socket.io": "^2.1.1",
+    "socketio-auth": "^0.1.1"
   }
 }
