@@ -1,7 +1,14 @@
-const server = require('./lib/server');
+const init = require('./lib/init');
+const serverSocket = require('./lib/server');
+const death = require('death');
 
-require('death')(function(signal, err) {
-  server.close(function() {
-    console.info('shutdown')
+(async function() {
+  await init();
+  const server = serverSocket();
+  death(function(signal, err) {
+    server.close(function() {
+      console.info('shutdown')
+    });
   });
-});
+})();
+

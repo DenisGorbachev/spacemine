@@ -2,6 +2,8 @@ const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
 const config = require('config');
 const Promise = require('bluebird');
+const init = require('./lib/init');
+const serverSocket = require('./lib/server');
 const clientSocket = require("socket.io-client");
 const Robot = require('./lib/model/Robot');
 
@@ -11,7 +13,8 @@ chai.should();
 jest.setTimeout(3000);
 
 beforeAll(async () => {
-  global.server = require('./lib/server');
+  await init();
+  global.server = serverSocket();
 });
 
 afterAll((done) => {
@@ -20,7 +23,7 @@ afterAll((done) => {
 
 beforeEach(async (done) => {
   await Robot.removeAsync({});
-  const linda = new Robot({name: 'Linda', key: 'LindaKey', secret: 'LindaSecret', x: 0, y: 0, parts: [
+  const linda = new Robot({name: 'Linda', key: 'LindaKey', secret: 'LindaSecret', coords: [0, 0], parts: [
     {type: 'engine', range: 5, drain: 5},
     {type: 'battery', charge: 40, capacity: 50}
   ]});
