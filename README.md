@@ -1,14 +1,16 @@
-## SpaceMine = Factorio + Dwarf Fortress
+## Spacemine = Factorio + Dwarf Fortress
 
 ## Overview
 
-SpaceMine is a game where you gather resources to fulfill the requests of space merchants. You navigate a fleet of robots using programmatic commands, which require energy to execute. You get the energy from merchants, as a reward for fulfilling their requests.
+Spacemine is a game where you gather resources to fulfill the requests of space merchants. You navigate a fleet of robots which require energy to function. You receive the energy from merchants, as a reward for fulfilling their requests.
 
-By a lucky chance, the planet provides all raw materials to assemble new robots or upgrade existing ones. However, the resources are limited: use them wisely!
+## Start playing
 
-There is no registration process. In order to play the game, you have to receive the API key for your first robot from another player (who assembled it himself).
-
-Each robot has its own API key & secret (which you can regenerate if you want to).
+1. Register on (Discord channel)[link].
+1. Request the API key-secret pair for your first robot from another player in (Discord channel)[link] (there is no regular "registration" in the game).
+1. Install the client.
+1. Add the API key-secret to your accounts via `sm add [name] [key] [secret]` (choose the name for yourself)
+1. Start working towards your goals.
 
 Robots can be assembled from multiple components:
 * Controller - creates the API key & secret for operating the robot (required)
@@ -32,7 +34,7 @@ Apart from controller, no other components are required. For example, it's possi
     * Start continuously scanning surroundings.
     * As soon as scout is detected, calculate the tile on which it'll move to pick the metal.
     * Start continuously jamming that tile.
-    * Jam the scout, regenerating its API secret and gaining control over it.
+    * Jam the scout, regenerate its API secret and gain control over it.
 * Capture spaceport:
     * Assemble multiple robots with scanning and jamming capabilities.
     * Move the whole group to spaceport.
