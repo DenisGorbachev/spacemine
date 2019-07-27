@@ -1,12 +1,12 @@
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 const chaiSubset = require('chai-subset');
 const config = require('config');
 const Promise = require('bluebird');
 const init = require('./lib/init');
 const serverSocket = require('./lib/server');
-const clientSocket = require("socket.io-client");
-const Object = require('./lib/model/base/Object');
+const clientSocket = require('socket.io-client');
+const User = require('./lib/model/User');
 const Robot = require('./lib/model/Robot');
 
 chai.use(chaiAsPromised);
@@ -16,37 +16,43 @@ chai.should();
 jest.setTimeout(3000);
 
 beforeAll(async () => {
-  await init();
+  global.mongoose = await init();
   global.server = serverSocket();
 });
 
-afterAll((done) => {
-  global.server.close(done);
+afterAll(async () => {
+  await global.mongoose.connection.close();
+  await global.server.closeAsync();
 });
 
 beforeEach(async (done) => {
-  await Object.removeAsync({});
+  await User.deleteManyAsync({});
+  await Robot.deleteManyAsync({});
+  global.alice = await new User({
+    email: 'alice@example.com',
+    username: 'alice',
+    password: '123123',
+  }).save();
+  global.bob = await new User({
+    email: 'bob@example.com',
+    username: 'bob',
+    password: '123123',
+  }).save();
   global.linda = await new Robot({
-    name: 'Linda', secret: 'LindaSecret', tile: [0, 0], parts: [
-      {type: 'battery', charge: 40, capacity: 50},
-      {type: 'engine', range: 5, drain: 5},
-      {type: 'scanner', range: 7, drain: 2},
-    ]
+    name: 'Linda',
+    config: 'MSFD',
+    coords: [0, 0],
+    userId: global.alice
   }).save();
   global.bart = await new Robot({
-    name: 'Bart', secret: 'BartSecret', tile: [1, 0], parts: [
-      {type: 'battery', charge: 60, capacity: 100},
-      {type: 'engine', range: 10, drain: 7},
-      {type: 'scanner', range: 10, drain: 3},
-    ]
+    name: 'Bart',
+    config: 'MSFDSFDDFM',
+    coords: [1, 0],
+    userId: global.bob
   }).save();
   global.client = clientSocket(`http://localhost:${config.get('port')}`);
   Promise.promisifyAll(global.client);
-  global.client.emit('authentication', {key: linda._id.toString(), secret: 'LindaSecret'}, function() {
-    console.log('auth');
-
-    console.log(arguments);
-  });
+  global.client.emit('authentication', { username: 'alice', password: '123123' });
   global.client.on('authenticated', () => done());
 });
 
