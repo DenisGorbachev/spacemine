@@ -2,24 +2,27 @@
 
 ## Overview
 
-Spacemine is a game where you gather resources to fulfill the requests of space merchants. You navigate a fleet of robots which require energy to function. You receive the energy from merchants, as a reward for fulfilling their requests.
+Spacemine is a game where you complete the quests of space merchants by gathering resources on planet surface. You gather resources by commanding robots, which require energy to function. You receive the energy from merchants, as a reward for completing their quests.
+
+_"Energy -> Robots -> Quests" diagram_
+
+Spacemine energy is an ERC-20 token: you can sell it on (real market)[link]. Tip: you should sell only surplus energy, since it's required to complete the quests & get more energy. Want to learn more? Read (Spacemine Energy Token economics)[#spacemine-energy-token-economics]. 
 
 ## Start playing
 
 1. Register on (Discord channel)[link].
-1. Request the API key-secret pair for your first robot from another player in (Discord channel)[link] (there is no regular "registration" in the game).
+1. Request an account from (Denis Gorbachev)[link] (this is temporary, until we implement normal registration).
 1. Install the client.
 1. Add the API key-secret to your accounts via `sm add [name] [key] [secret]` (choose the name for yourself)
-1. Start working towards your goals.
+1. Start building up your energy reserves.
 
 Robots can be assembled from multiple components:
-* Controller - creates the API key & secret for operating the robot (required)
 * Engine - allows to move
-* Jammer - allows to reprogram other robots (regenerate their API keys, bringing them under your control)
 * Scanner - allows to scan surroundings
-* Battery - allows to store energy
+* Laser - allows to fire at other robots, damaging their components
+* Jammer - allows to reprogram other robots, bringing them under your control
 
-Apart from controller, no other components are required. For example, it's possible to assemble an immobile turret using only controller + jammer.
+A robot can contain only a single component. For example, it's possible to assemble a stationary turret using only laser.
 
 ## Possibilities
 
@@ -171,12 +174,20 @@ Scanned 7 nearest squares:
     14,14   Metal
     14,15   Metal                                      
 
-## 
+## Spacemine Energy Token economics
+
+* Type: ERC-20.
+* Max supply: 1000000000.
+* Initial supply: 0 (no premine).
+* Future supply:
+  * Airdrop: 1000 per player for first 10000 new players.
+  * Quests: 250-10000 per completion.
+* Future demand:
+  * Actions: 1-100 per robot action.
+
+Supply & demand balance is achieved by matching quest rewards with quest needs (energy spent on actions that lead to quest completion).
 
 ## FAQ
-
-Q: Can I buy from spaceport?
-A: No, you can only sell.
 
 Q: Is there any cooldown between commands?
 A: There's no cooldown in original version: you can act as fast as you can send commands. However, mods may implement cooldown in order to make the game more competitive for humans. 
