@@ -15,17 +15,46 @@ chai.should();
 
 jest.setTimeout(3000);
 
-beforeAll(async () => {
+// Workaround for Jest not displaying errors from before hooks
+tryCatch = function (f) {
+  return async function () {
+    try {
+      await f.apply(this, arguments);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
+
+function waitForEvent(observable, event, timeout = 1000) {
+  return new Promise(function (resolve, reject) {
+    let timer;
+
+    function listener(data) {
+      clearTimeout(timer);
+      observable.removeListener(event, listener);
+      resolve(data);
+    }
+
+    observable.on(event, listener);
+    timer = setTimeout(function () {
+      observable.removeListener(event, listener);
+      reject(new Error('timeout'));
+    }, timeout);
+  });
+}
+
+beforeAll(tryCatch(async () => {
   global.mongoose = await init();
   global.server = serverSocket();
-});
+}));
 
-afterAll(async () => {
+afterAll(tryCatch(async () => {
   await global.mongoose.connection.close();
   await global.server.closeAsync();
-});
+}));
 
-beforeEach(async (done) => {
+beforeEach(tryCatch(async () => {
   await User.deleteManyAsync({});
   await Robot.deleteManyAsync({});
   global.alice = await new User({
@@ -53,9 +82,9 @@ beforeEach(async (done) => {
   global.client = clientSocket(`http://localhost:${config.get('port')}`);
   Promise.promisifyAll(global.client);
   global.client.emit('authentication', { username: 'alice', password: '123123' });
-  global.client.on('authenticated', () => done());
-});
+  await waitForEvent(global.client, 'authenticated');
+}));
 
-afterEach(() => {
+afterEach(tryCatch(async () => {
   global.client.disconnect();
-});
+}));
