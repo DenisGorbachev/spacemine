@@ -1,14 +1,16 @@
-## Spacemine = Factorio + Dwarf Fortress (online)
+# Spacemine = Factorio + Dwarf Fortress (online)
+
+[**Start game**](#start-game) | [How to play](#guide) | (Spacemine Energy Token economics)[#spacemine-energy-token-economics]
 
 ## Overview
 
-Spacemine is a game where you complete the quests of space merchants by gathering resources on planet surface. You gather resources by commanding robots, which require energy to function. You receive the energy from merchants, as a reward for completing their quests.
+Spacemine is a game where you complete missions for space merchants by gathering resources on planet surface. You gather resources by commanding robots, which require energy to function. You receive energy from merchants, as reward for completing their missions.
 
-_"Energy -> Robots -> Quests" diagram_
+_"Merchants -(energy)> Robots, Merchants <(resources)- Robots" diagram_
 
-Spacemine energy is an ERC-20 token: you can sell it on (real market)[link]. Tip: you should sell only surplus energy, since it's required to complete the quests & get more energy. Want to learn more? Read (Spacemine Energy Token economics)[#spacemine-energy-token-economics]. 
+Spacemine Energy is an ERC-20 token: you can sell it on (real market)[link]. Tip: you should sell only surplus energy, since it's required to complete missions & get more energy. Want to learn more? Read (Spacemine Energy Token economics)[#spacemine-energy-token-economics]. 
 
-## Start playing
+## Start game
 
 1. Register on (Discord channel)[link].
 1. Request an account from (Denis Gorbachev)[link] (this is temporary, until we implement normal registration).
@@ -51,12 +53,18 @@ A robot can contain only a single component. For example, it's possible to assem
     * Scan the surroundings to discover positions of defenders.
     * Jam the defenders.
 
-## Resources
+## Guide
 
-* M - +1 move speed
-* F - +1 fire power
-* S - +1 scan range
-* D - +1 defense depth
+### Resources
+
+Resources are sold to merchants for energy or utilized to build new robots. There are four resources in Spacemine: 
+
+* M - Meltenus (+1 move speed)
+* F - Ferratus (+1 fire power)
+* S - Santerus (+1 scan range)
+* D - Dubnetus (+1 defense depth)
+
+Each resource provides a bonus to robot characteristics.
 
 ## Combat mechanics (firing & defending)
 
@@ -85,8 +93,8 @@ Example #2:
 ### Move
 
 ```bash
-$ spacemine connect --key MC4GhvmbsYr43k5tn --secret [secret]
-Connected to robot "Linda" #MC4GhvmbsYr43k5tn at coords [5,5] with [nothing] in trunk
+$ spacemine connect [username] [password]
+Connected to robot "Linda" (5-0-5-0) at coords [5,5] with [nothing] in trunk
 45 / 60     Energy
 1           Engine (range 7, drain 5)
 1           Jammer (range 4, drain 10)
