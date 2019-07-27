@@ -1,4 +1,4 @@
-## Spacemine = Factorio + Dwarf Fortress
+## Spacemine = Factorio + Dwarf Fortress (online)
 
 ## Overview
 
@@ -50,6 +50,35 @@ A robot can contain only a single component. For example, it's possible to assem
     * Advance with moving robots first (to trick the defenders into jamming them)
     * Scan the surroundings to discover positions of defenders.
     * Jam the defenders.
+
+## Resources
+
+* M - +1 move speed
+* F - +1 fire power
+* S - +1 scan range
+* D - +1 defense depth
+
+## Combat mechanics (firing & defending)
+
+* Fire power = count of "F" in your robot configuration
+* Defense depth = count of "D" in target robot configuration
+* Damage = Fire power - Defense depth
+* Damage removes last n letters from robot configuration
+
+Example #1:
+
+* Robot Linda fires at robot Barney.
+* Linda has MSDSFDF configuration, Barney has DFSM configuration.
+* Linda fire power is 2F, Barney defense depth is 1D.
+* Linda damages Barney for 1 letter.
+* Barney configuration changes from DFSM to DFS, making him unable to move.
+
+Example #2:
+
+* Robot Barney fires at robot Linda.
+* Barney config is DFS, Linda config is MSDSFDF.
+* Barney fire power is 1F, Linda defense depth is 2D.
+* Barney doesn't do any damage.
 
 ## Scenarios
 
