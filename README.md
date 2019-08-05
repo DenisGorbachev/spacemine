@@ -1,6 +1,6 @@
 # Spacemine = Factorio + Dwarf Fortress (online)
 
-[**Start game**](#start-game) | [How to play](#guide) | (Spacemine Energy Token economics)[#spacemine-energy-token-economics]
+[**Start game**](#start-game) | [How to play](#guide) | [Spacemine Energy Token economics](#spacemine-energy-token-economics)
 
 ## Overview
 
