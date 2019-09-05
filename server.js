@@ -9,7 +9,7 @@ const death = require('death');
   const server = serverSocket();
   death(function(signal, err) {
     server.close(function() {
-      console.info('shutdown')
+      process.exit();
     });
   });
 })();
