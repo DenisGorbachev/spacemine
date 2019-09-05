@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const init = require('./lib/init');
 const serverSocket = require('./lib/server');
 const death = require('death');
