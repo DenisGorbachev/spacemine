@@ -290,3 +290,29 @@ This is an experiment. We can't guarantee the future price of the energy tokens.
 * Modder instantly charges 10000 SET for simple action.
 * -- Server decreases player balance.
 * ++ Server maintains player balance due to overcharge protection.
+
+### Player moves his robot to distant tile with a single command
+
+* Player types the command: `ls`
+* Player types the command: `mv 15,14`
+
+```$bash
+
+LINDA> ls
+|-----------------------------------------------|
+| Type       | Structure        | Location      |
+|-----------------------------------------------|
+| Mine       | A*107            | 45,10         |
+| Robot      | A*10+B*5         | 42,9          |
+|-----------------------------------------------|
+
+LINDA> mv 45,10
++ LINDA moved to 37,10
++ LINDA moved to 42,10
++ LINDA moved to 44,10
+X LINDA can't move closer: location occupied
+
+LINDA> pick 45,10
++ Picked "A".
++ Ability acquired: double damage to "B" letters
+```
