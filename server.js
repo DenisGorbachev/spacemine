@@ -1,16 +1,15 @@
-#!/usr/bin/env node
+const death = require('death')
+const init = require('./lib/init')
+const serverSocket = require('./lib/server')
 
-const init = require('./lib/init');
-const serverSocket = require('./lib/server');
-const death = require('death');
+async function main() {
+  await init()
+  const server = serverSocket()
+  death((signal, err) => {
+    server.close(() => {
+      process.exit()
+    })
+  })
+}
 
-(async function() {
-  await init();
-  const server = serverSocket();
-  death(function(signal, err) {
-    server.close(function() {
-      process.exit();
-    });
-  });
-})();
-
+main()
