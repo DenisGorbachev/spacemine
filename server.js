@@ -1,6 +1,6 @@
-const death = require('death')
-const init = require('./lib/init')
-const serverSocket = require('./lib/server')
+import death from 'death'
+import init from './lib/init'
+import serverSocket from './lib/server'
 
 async function main() {
   await init()
