@@ -1,4 +1,4 @@
 {
   "port": 6000,
-  "mongodb": "mongodb://localhost/testmine"
+  "mongodb": "mongodb://localhost/testmine?family=4"
 }
