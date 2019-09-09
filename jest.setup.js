@@ -23,6 +23,7 @@ const tryCatch = function (f) {
     try {
       await f.apply(this, args)
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e)
     }
   }
