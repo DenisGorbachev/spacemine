@@ -316,3 +316,18 @@ LINDA> pick 45,10
 + Picked "A".
 + Ability acquired: double damage to "B" letters
 ```
+
+### Spectator watches the game on Twitch
+
+* [Spectator](#spectator) opens a Twitch channel
+  * Owner: [Commentator](#commentator)
+
+## Definitions
+
+### Player
+
+### Commentator
+
+Commentator is a person who describes the game events as they are happening.
+
+### Spectator
