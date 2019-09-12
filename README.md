@@ -322,6 +322,12 @@ LINDA> pick 45,10
 * [Spectator](#spectator) opens a Twitch channel
   * Owner: [Commentator](#commentator)
 
+### Player sets the program for the robot
+
+* Player selects his robot
+* Player chooses an "Explore" program
+* Player watches the robot execute the program
+
 ## Definitions
 
 ### Player
